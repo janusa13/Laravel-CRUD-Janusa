@@ -22,3 +22,7 @@ Route::resource('products', ProductController::class);
 
 
 Route::resource('student',StudentController::class);
+
+Route::get('/details',[ProductController::class,'details']);
+
+Route::post('/insertProduct',[ProductController::class, 'insertProduct']);

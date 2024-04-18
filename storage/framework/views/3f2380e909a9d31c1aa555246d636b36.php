@@ -97,4 +97,4 @@ unset($__errorArgs, $__bag); ?>" id="fecha_nac" name="fecha_nac" value="<?php ec
 </div>
     
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('student.layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/student/create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('../layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/student/create.blade.php ENDPATH**/ ?>
