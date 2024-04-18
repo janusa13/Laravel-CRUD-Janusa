@@ -89,4 +89,9 @@ class ProductController extends Controller
     public function insertProduct(StoreProductRequest $request){
         Product::create($request->all());
     }
-}
+
+    public function productJson($id){
+        $product=Product::find($id);
+        return response()->json($product);
+    }
+}  
