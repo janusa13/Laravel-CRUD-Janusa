@@ -1,4 +1,4 @@
-@extends('products.layouts')
+@extends('student.layouts')
 
 @section('content')
 
@@ -27,21 +27,21 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @forelse ($alumnos as $alumno)
+                        @forelse ($student as $student)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $alumno->alumn_DNI }}</td>
-                            <td>{{ $alumno->nombre }}</td>
-                            <td>{{ $alumno->apellido }}</td>
-                            <td>{{ $alumno->asistencias }}</td>
+                            <td>{{ $student->alumn_DNI }}</td>
+                            <td>{{ $student->nombre }}</td>
+                            <td>{{ $student->apellido }}</td>
+                            <td>{{ $student->asistencias }}</td>
                             <td>
-                                <form action="{{ route('student.destroy', $product->id) }}" method="post">
+                                <form action="{{ route('student.destroy', $student->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
 
-                                    <a href="{{ route('student.show', $product->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
+                                    <a href="{{ route('student.show', $student->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Show</a>
 
-                                    <a href="{{ route('student.edit', $product->id) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>   
+                                    <a href="{{ route('student.edit', $student->id) }}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i> Edit</a>   
 
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this student?');"><i class="bi bi-trash"></i> Delete</button>
                                 </form>
@@ -56,8 +56,7 @@
                         @endforelse
                     </tbody>
                   </table>
-
-                  {{ $products->links() }}
+                
 
             </div>
         </div>
