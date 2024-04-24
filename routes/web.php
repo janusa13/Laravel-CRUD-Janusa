@@ -28,3 +28,5 @@ Route::get('/details',[ProductController::class,'details']);
 Route::post('/insertProduct',[ProductController::class, 'insertProduct']);
 
 Route::get('/product/{id}',[ProductController::class,'productJson']);
+
+Route::get('/student/assists/{id}',[StudentController::class,'getAssists']);

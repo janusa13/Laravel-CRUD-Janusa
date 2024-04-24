@@ -16,4 +16,9 @@ class student extends Model
         'asistencias',
         'fecha_nac'
     ];
+
+
+    public function assists(){
+        return $this ->hasMany(Assist::class);
+    }
 }
