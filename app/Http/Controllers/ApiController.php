@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Http\Controllers\StudentController;
+use App\Models\Assist;
 
 class ApiController extends Controller
 {
     public function condicionStudent($id){
-      $asist=Assist::find($id);
-        
+        $clases=20;
+      $asist=Assist::find($id)->count();
+        $cant= $asist/$clases;
         // (asistencias /clases)
 
     }
