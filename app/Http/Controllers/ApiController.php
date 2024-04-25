@@ -1,17 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
-
 use Illuminate\Http\Request;
+use App\Http\Controllers\StudentController;
 
 class ApiController extends Controller
 {
     public function condicionStudent($id){
-        
-        $asistencias=Student::getAssistencias($id);
-
-        dd($assist->cant);
+      $asist=Assist::find($id);
         
         // (asistencias /clases)
 
