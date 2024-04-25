@@ -23,7 +23,6 @@
                         <th scope="col">DNI</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
-                        <th scope="col">Asistencias</th>
                         <th scope="col">Fecha de nacimiento</th>
                       </tr>
                     </thead>
@@ -34,7 +33,7 @@
                             <td><?php echo e($student->alumn_DNI); ?></td>
                             <td><?php echo e($student->nombre); ?></td>
                             <td><?php echo e($student->apellido); ?></td>
-                            <td><?php echo e($student->asistencias); ?></td>
+                            <td><?php echo e($student->fecha_nac); ?></td>
                             <td>
                                 <form action="<?php echo e(route('student.destroy', $student->id)); ?>" method="post">
                                     <?php echo csrf_field(); ?>
@@ -46,7 +45,7 @@
                                     
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this student?');"><i class="bi bi-trash"></i> Delete</button>
                                 </form>
-                                <a href="<?php echo e(route('student.assists', $student->id)); ?>" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Asistencias</a>
+                                <a href="<?php echo e(route('student.assists', ['id' => $student->id])); ?>" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Asistencias</a>
                             </td>
                         </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>

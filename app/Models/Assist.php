@@ -11,6 +11,6 @@ class assist extends Model
     use HasFactory;
 
     public function student(){
-        return $this->belongsTo(student::class);
+        return $this->belongsTo(Student::class, 'id_student');
     }
 }

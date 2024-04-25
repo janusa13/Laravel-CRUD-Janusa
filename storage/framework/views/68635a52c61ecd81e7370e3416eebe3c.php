@@ -62,4 +62,4 @@
 </div>
     
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('student.layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/student/show.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('../layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/student/show.blade.php ENDPATH**/ ?>

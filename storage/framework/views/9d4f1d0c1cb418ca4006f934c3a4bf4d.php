@@ -1,6 +1,6 @@
-@extends('../layouts')
 
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 
 <div class="row justify-content-center mt-3">
     <div class="col-md-8">
@@ -11,7 +11,7 @@
                     Asistencias.
                 </div>
                 <div class="float-end">
-                    <a href="{{ route('student.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
+                    <a href="<?php echo e(route('student.index')); ?>" class="btn btn-primary btn-sm">&larr; Back</a>
                 </div>
             </div>
             <div class="card-body">
@@ -19,28 +19,32 @@
                 <div class="row">
                     <label for="dni" class="col-md-4 col-form-label text-md-end text-start"><strong>DNI:</strong></label>
                     <div class="col-md-6" style="line-height: 35px;">
-                        {{ $student->alumn_DNI }}
+                        <?php echo e($student->alumn_DNI); ?>
+
                     </div>
                 </div>
 
                 <div class="row">
                     <label for="name" class="col-md-4 col-form-label text-md-end text-start"><strong>Nombre:</strong></label>
                     <div class="col-md-6" style="line-height: 35px;">
-                        {{ $student->nombre }}
+                        <?php echo e($student->nombre); ?>
+
                     </div>
                 </div>
 
                 <div class="row">
                     <label for="lastname" class="col-md-4 col-form-label text-md-end text-start"><strong>Apellido:</strong></label>
                     <div class="col-md-6" style="line-height: 35px;">
-                        {{ $student->apellido }}
+                        <?php echo e($student->apellido); ?>
+
                     </div>
                 </div>
 
                 <div class="row">
                     <label for="assists" class="col-md-4 col-form-label text-md-end text-start"><strong>Faltas Totales:</strong></label>
                     <div class="col-md-6" style="line-height: 35px;">
-                        {{ $cant }}
+                        <?php echo e($cant); ?>
+
                     </div>
                 </div>
         
@@ -49,4 +53,6 @@
     </div>    
 </div>
     
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('../layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/student/assists.blade.php ENDPATH**/ ?>

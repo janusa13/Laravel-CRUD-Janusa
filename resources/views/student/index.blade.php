@@ -22,7 +22,6 @@
                         <th scope="col">DNI</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
-                        <th scope="col">Asistencias</th>
                         <th scope="col">Fecha de nacimiento</th>
                       </tr>
                     </thead>
@@ -33,7 +32,7 @@
                             <td>{{ $student->alumn_DNI }}</td>
                             <td>{{ $student->nombre }}</td>
                             <td>{{ $student->apellido }}</td>
-                            <td>{{ $student->asistencias }}</td>
+                            <td>{{$student->fecha_nac}}</td>
                             <td>
                                 <form action="{{ route('student.destroy', $student->id) }}" method="post">
                                     @csrf
@@ -45,7 +44,7 @@
                                     
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this student?');"><i class="bi bi-trash"></i> Delete</button>
                                 </form>
-                                <a href="{{ route('student.assists', $student->id) }}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Asistencias</a>
+                                <a href="{{ route('student.assists', ['id' => $student->id]) }}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Asistencias</a>
                             </td>
                         </tr>
                         @empty

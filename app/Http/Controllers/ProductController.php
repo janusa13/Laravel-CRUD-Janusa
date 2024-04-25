@@ -94,4 +94,5 @@ class ProductController extends Controller
         $product=Product::find($id);
         return response()->json($product);
     }
+
 }  

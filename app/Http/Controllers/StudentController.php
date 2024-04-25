@@ -16,7 +16,7 @@ class StudentController extends Controller
     public function index() : View
     {
         return view('student.index', [
-            'student' => Student::latest()->paginate(3)
+            'student' => Student::latest()->paginate(10)
         ]);
     }
 
@@ -78,11 +78,16 @@ class StudentController extends Controller
                 ->withSuccess('Student is deleted successfully.');
     }
 
-    public function getAssists($id){
-        $student = Student::find($id);
-        $cant=$student->assists;
-        return $cant;
-    }
+public function getAssists($id){
+    $student = Student::findOrFail($id);
+    $cant = $student->assists()->count();
+    $assists = $student->assists;
+    return view('student.assists', [
+        'student' => $student,
+        'cant' => $cant,
+        'assists' => $assists
+    ]);
+}
 }
 
 // Illuminate\Database\QueryException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'assists.student_id' in 'where clause' (Connection: mysql, SQL: select * from `assists` where `assists`.`student_id` = 1 and `assists`.`student_id` is not null) in file C:\laragon\www\Laravel-CRUD-Janusa\vendor\laravel\framework\src\Illuminate\Database\Connection.php on line 801
