@@ -38,10 +38,17 @@
                 </div>
 
                 <div class="row">
-                    <label for="assists" class="col-md-4 col-form-label text-md-end text-start"><strong>Faltas Totales:</strong></label>
+                    <label for="assists" class="col-md-4 col-form-label text-md-end text-start"><strong>Asistencias Totales:</strong></label>
                     <div class="col-md-6" style="line-height: 35px;">
                         {{ $cant }}
                     </div>
+                </div>
+                <div class="row">
+                <label for="assists" class="col-md-4 col-form-label text-md-end text-start"><strong>Fecha de Asistencias:</strong></label>
+                <div class="col-md-6" style="line-height: 35px;">
+                @foreach ($assists as $assist)
+                <li>Fecha:  {{ $assist->created_at->format('d-m-Y')}}</li>
+                @endforeach
                 </div>
         
             </div>
@@ -50,3 +57,5 @@
 </div>
     
 @endsection
+
+

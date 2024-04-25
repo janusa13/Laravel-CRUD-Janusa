@@ -46,6 +46,7 @@
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this student?');"><i class="bi bi-trash"></i> Delete</button>
                                 </form>
                                 <a href="<?php echo e(route('student.assists', ['id' => $student->id])); ?>" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Asistencias</a>
+                                <a href="<?php echo e(route('student.addAssists', ['id' => $student->id])); ?>" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Agregar asistencia</a>
                             </td>
                         </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
