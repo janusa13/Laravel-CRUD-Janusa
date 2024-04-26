@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\LessonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,7 @@ Route::get('/', function () {
 });
 Route::resource('products', ProductController::class);
 
+Route::resource('lesson',LessonController::class);
 
 Route::resource('student',StudentController::class);
 
@@ -32,3 +34,7 @@ Route::get('/product/{id}',[ProductController::class,'productJson']);
 Route::get('/student/assists/{id}',[StudentController::class,'getAssists'])->name('student.assists');
 
 Route::get('/student/addAssists/{id}',[StudentController::class,'addAssists'])->name('student.addAssists');
+
+Route::get('/lesson',[LessonController::class,'create'])->name("lesson.created");
+
+Route::post('/insert/lesson', [LessonController::class, 'store'])->name('lesson.add');

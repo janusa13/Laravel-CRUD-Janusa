@@ -15,6 +15,7 @@
             <div class="card-header">Student List</div>
             <div class="card-body">
                 <a href="{{ route('student.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New Student</a>
+                  <a href="{{ route('lesson.created') }}" class="btn btn-success btn-sm my-2"><i  class="bi bi-pencil-square""></i>Class options</a>
                 <table class="table table-striped table-bordered">
                     <thead>
                       <tr>
@@ -44,8 +45,8 @@
                                     
                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Do you want to delete this student?');"><i class="bi bi-trash"></i> Delete</button>
                                 </form>
-                                <a href="{{ route('student.assists', ['id' => $student->id]) }}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Asistencias</a>
-                                <a href="{{ route('student.addAssists', ['id' => $student->id]) }}" class="btn btn-warning btn-sm"><i class="bi bi-eye"></i> Agregar asistencia</a>
+                                <a href="{{ route('student.assists', ['id' => $student->id]) }}" class="btn btn-primary btn-sm"><i class="bi bi-eye"></i> Asistencias</a>
+                                <a href="{{ route('student.addAssists', ['id' => $student->id]) }}"  class="btn btn-success btn-sm my-2"><i class="bi bi-eye"></i> Agregar asistencia</a>
                             </td>
                         </tr>
                         @empty
