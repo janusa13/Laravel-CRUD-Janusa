@@ -15,5 +15,7 @@ class Lesson extends Model
         'promocion',
         'regular',
     ];
-
+    public function assist(){
+        return $this->hasMany(lesson::class);
+    }
 }

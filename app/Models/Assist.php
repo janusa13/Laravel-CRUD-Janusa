@@ -19,4 +19,8 @@ class assist extends Model
     public function student(){
         return $this->belongsTo(Student::class, 'id_student');
     }
+
+    public function lesson(){
+        return $this->belongsTo(Lesson::class);
+    }
 }

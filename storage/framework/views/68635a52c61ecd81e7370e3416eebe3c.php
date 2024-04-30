@@ -47,14 +47,6 @@
 
                         </div>
                     </div>
-
-                    <div class="row">
-                        <label for="description" class="col-md-4 col-form-label text-md-end text-start"><strong>Asistencias:</strong></label>
-                        <div class="col-md-6" style="line-height: 35px;">
-                            <?php echo e($student->asistencias); ?>
-
-                        </div>
-                    </div>
         
             </div>
         </div>

@@ -8,6 +8,7 @@ use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use Illuminate\Support\Facades\Http;
 
 class StudentController extends Controller
 {
@@ -46,6 +47,7 @@ class StudentController extends Controller
     {
         return view('student.show', [
             'student' => $student
+            
         ]);
     }
 
@@ -83,10 +85,13 @@ class StudentController extends Controller
         $student = Student::find($id);
         $cant = $student->assists()->count();
         $assists = $student->assists;
+        /*$response=Http::get('http://localhost:8000/api/assists/'.$id);
+        $condicion=$response->body();*/
         return view('student.assists', [
             'student' => $student,
             'cant' => $cant,
-            'assists' => $assists
+            'assists' => $assists,
+           // 'condicion'=>$condicion
         ]);
 }
 
