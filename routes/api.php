@@ -23,3 +23,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/assists/{id}',[ApiController::class,'condicionStudent']);
+
+/* cada vez que una persona acceda a esa persona
+ que quede un registro en la BD
+
+ cada vez que entre a una ruta de tipo get que se llame Log
+ un middleware que registre en la BD dia, hora y la IP.
+ */

@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LessonController;
 
@@ -19,11 +19,12 @@ use App\Http\Controllers\LessonController;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::resource('products', ProductController::class);
 
 Route::resource('lesson',LessonController::class);
 
-Route::resource('student',StudentController::class);
+
 
 Route::get('/details',[ProductController::class,'details']);
 
@@ -38,3 +39,16 @@ Route::get('/student/addAssists/{id}',[StudentController::class,'addAssists'])->
 Route::get('/lesson',[LessonController::class,'create'])->name("lesson.created");
 
 Route::post('/insert/lesson', [LessonController::class, 'store'])->name('lesson.add');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::resource('student',StudentController::class);
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
