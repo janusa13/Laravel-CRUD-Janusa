@@ -20,9 +20,12 @@ public function store(StoreLessonRequest $request) : RedirectResponse {
 }
 
 
-    public function create():View
+    public function create(Lesson $lesson):View
     {
-        return view('lessons.create');
+        $lesson = Lesson::first();
+        return view('lessons.create', [
+            'lesson'=> $lesson
+        ]);
     }
 }
 

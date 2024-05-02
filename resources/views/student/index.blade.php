@@ -27,7 +27,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @forelse ($student as $student)
+                        @forelse ($students as $student)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ $student->alumn_DNI }}</td>
@@ -56,6 +56,7 @@
                                 </span>
                             </td>
                         @endforelse
+                        {{ $students->links() }}
                     </tbody>
                   </table>
                 

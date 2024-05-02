@@ -28,7 +28,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                        <?php $__empty_1 = true; $__currentLoopData = $student; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $student): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                        <?php $__empty_1 = true; $__currentLoopData = $students; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $student): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <tr>
                             <th scope="row"><?php echo e($loop->iteration); ?></th>
                             <td><?php echo e($student->alumn_DNI); ?></td>
@@ -57,6 +57,8 @@
                                 </span>
                             </td>
                         <?php endif; ?>
+                        <?php echo e($students->links()); ?>
+
                     </tbody>
                   </table>
                 

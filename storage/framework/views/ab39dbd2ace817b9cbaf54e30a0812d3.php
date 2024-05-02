@@ -72,7 +72,25 @@ unset($__errorArgs, $__bag); ?>" id="regular" name="regular" value="<?php echo e
                     <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add Lessons">
                     </div>
-                    
+                                        <div class="row">
+                        <label for="quantity" class="col-md-4 col-form-label text-md-end text-start"><strong>Cantidad de clases:</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            <?php echo e($lesson->lessons); ?>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="quantity" class="col-md-4 col-form-label text-md-end text-start"><strong>Porcentaje min para promocionar:</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            <?php echo e($lesson->promocion); ?>%
+                        </div>
+                    </div>
+                                                            <div class="row">
+                        <label for="quantity" class="col-md-4 col-form-label text-md-end text-start"><strong>Porcentaje min para regularizar:</strong></label>
+                        <div class="col-md-6" style="line-height: 35px;">
+                            <?php echo e($lesson->regular); ?>%
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
