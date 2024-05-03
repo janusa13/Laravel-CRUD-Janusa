@@ -1,6 +1,6 @@
-<nav x-data="{ open: false }" class=" dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700" >
+<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -58,7 +58,7 @@
 <?php endif; ?>
 <?php $component->withAttributes(['align' => 'right','width' => '48']); ?>
                      <?php $__env->slot('trigger', null, []); ?> 
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400  dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
                             <div><?php echo e(Auth::user()->name); ?></div>
 
                             <div class="ms-1">
@@ -209,4 +209,4 @@
         </div>
     </div>
 </nav>
-<?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/layouts/navigation.blade.php ENDPATH**/ ?>
+<?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views//layouts/navigation.blade.php ENDPATH**/ ?>

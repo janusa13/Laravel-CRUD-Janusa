@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::resource('products', ProductController::class);
 
 Route::resource('lesson',LessonController::class);
@@ -40,12 +44,14 @@ Route::get('/lesson',[LessonController::class,'create'])->name("lesson.created")
 
 Route::post('/insert/lesson', [LessonController::class, 'store'])->name('lesson.add');
 
+
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('student.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::resource('student',StudentController::class);
+     Route::resource('student',StudentController::class);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

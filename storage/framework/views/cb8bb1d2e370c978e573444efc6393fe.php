@@ -3,6 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
         <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
         <title><?php echo e(config('app.name', 'Laravel')); ?></title>
@@ -20,7 +23,7 @@
 
             <!-- Page Heading -->
             <?php if(isset($header)): ?>
-                <header class="bg-white dark:bg-gray-800 shadow">
+                <header class="dark:bg-gray-800 shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         <?php echo e($header); ?>
 
@@ -35,5 +38,6 @@
             </main>
         </div>
     </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </html>
 <?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/layouts/app.blade.php ENDPATH**/ ?>

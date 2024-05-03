@@ -1,8 +1,8 @@
-@extends('../layouts')
+@extends('../dashboard')
 
 @section('content')
 
-<div class="row justify-content-center mt-3">
+<div class="row justify-content-center mt-3" data-bs-theme="dark">
     <div class="col-md-12">
 
         @if ($message = Session::get('success'))
@@ -11,7 +11,7 @@
             </div>
         @endif
 
-        <div class="card">
+        <div class="card" data-bs-theme="dark">
             <div class="card-header">Student List</div>
             <div class="card-body">
                 <a href="{{ route('student.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New Student</a>

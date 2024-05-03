@@ -2,7 +2,7 @@
 
 <?php $__env->startSection('content'); ?>
 
-<div class="row justify-content-center mt-3">
+<div class="row justify-content-center mt-3" data-bs-theme="dark">
     <div class="col-md-12">
 
         <?php if($message = Session::get('success')): ?>
@@ -12,7 +12,7 @@
             </div>
         <?php endif; ?>
 
-        <div class="card">
+        <div class="card" data-bs-theme="dark">
             <div class="card-header">Student List</div>
             <div class="card-body">
                 <a href="<?php echo e(route('student.create')); ?>" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i> Add New Student</a>
@@ -70,4 +70,4 @@
     
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('../layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/student/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('../dashboard', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/student/index.blade.php ENDPATH**/ ?>
