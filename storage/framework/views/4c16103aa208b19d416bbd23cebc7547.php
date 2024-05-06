@@ -9,8 +9,7 @@
 <?php $component->withAttributes([]); ?>
      <?php $__env->slot('header', null, []); ?> 
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <?php echo e(__('Dashboard')); ?>
-
+            NWA - Sistema de control de asistencias
         </h2>
         
      <?php $__env->endSlot(); ?>
