@@ -95,6 +95,7 @@ class StudentController extends Controller
         ]);
 }
 
+
     public function addAssists($id){
         $student = Student::find($id);
         $assist= new Assist();
@@ -103,7 +104,6 @@ class StudentController extends Controller
         $assist->save();
         return redirect()->route('student.index');
     }
-    
 }
 
 // Illuminate\Database\QueryException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'assists.student_id' in 'where clause' (Connection: mysql, SQL: select * from `assists` where `assists`.`student_id` = 1 and `assists`.`student_id` is not null) in file C:\laragon\www\Laravel-CRUD-Janusa\vendor\laravel\framework\src\Illuminate\Database\Connection.php on line 801
