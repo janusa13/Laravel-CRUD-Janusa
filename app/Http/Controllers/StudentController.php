@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use Illuminate\Support\Facades\Http;
+use App\Http\Requests\StoreAssistRequest;
 
 class StudentController extends Controller
 {
@@ -96,13 +97,30 @@ class StudentController extends Controller
 }
 
 
-    public function addAssists($id){
+    /**public function addAssists($id){
         $student = Student::find($id);
         $assist= new Assist();
         $assist->id_student=$student->id;
         $assist->alumn_id=$student->alumn_DNI;
         $assist->save();
         return redirect()->route('student.index');
+    }
+*/
+
+public function addAssists(StoreAssistRequest $request){
+    $student = Student::find($id);
+    if($student->cant()>0){
+    $assist= new Assist();
+    $assist->id_student=$student->id;
+    $assist->alumn_id=$student->alumn_DNI;
+    $assist->save();
+    }
+    return redirect()->route('student.index');
+}
+
+    public function addAssistsView() : View
+    {
+        return view('student.viewAssist');
     }
 }
 
