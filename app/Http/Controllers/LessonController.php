@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
+    
 public function store(StoreLessonRequest $request) : RedirectResponse {
     if (Lesson::count() > 0) {
         Lesson::truncate(); 
@@ -19,7 +20,6 @@ public function store(StoreLessonRequest $request) : RedirectResponse {
     ->withSuccess('Lesson added successfully');
 }
 
-
     public function create(Lesson $lesson):View
     {
         $lesson = Lesson::first();
@@ -27,6 +27,5 @@ public function store(StoreLessonRequest $request) : RedirectResponse {
             'lesson'=> $lesson
         ]);
     }
+
 }
-
-
