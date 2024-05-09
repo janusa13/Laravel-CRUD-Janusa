@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\student;
+use App\Models\Student;
 use App\Models\Assist;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -10,6 +10,7 @@ use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use Illuminate\Support\Facades\Http;
 use App\Http\Requests\StoreAssistRequest;
+use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -108,20 +109,30 @@ class StudentController extends Controller
     }
 */
 
-public function addAssists(StoreAssistRequest $request){
-    $student = Student::find($request->id);
+public function addAssists(Request $request){
+    $student = Student::find($request->alumn_DNI);
     if($student){
-    $assist= new Assist();
-    $assist->id_student=$request->id;
-    $assist->alumn_id=$request->alumn_DNI;
-    $assist->save();
+        $assist= new Assist();
+        $assist->id_student=$student->id;
+        $assist->alumn_id=$student->alumn_DNI;
+        $assist->save();
     }
-    
-    return redirect()->route('assist.view');
+    return view('student.assistsView');
 }
 
+    public function findStudent(Request $request)
+    {
+        $student=Student::find($request->alumn_DNI);
+        return redirect()->route('student.index');
+    }
+
+    public function showSearch() :view 
+    {
+        return view('student.showSearchStudent'); 
+    }
+
+
     public function addAssistsView() : View
-    
     {
         return view('student.assistsView');
     }

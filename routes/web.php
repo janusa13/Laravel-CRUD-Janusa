@@ -17,11 +17,14 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 Route::post('/student/addAssists',[StudentController::class,'addAssists'])->name('student.addAssists');
 Route::get('/assist/view',[StudentController::class,'addAssistsView'])->name('assist.view');
+Route::post('/search/view',[StudentController::class,'findStudent'])->name('search.viewStudent');
+
 
 
 Route::get('/dashboard', function () {

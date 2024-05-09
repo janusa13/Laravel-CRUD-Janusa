@@ -17,7 +17,26 @@
             <div class="card-body">
                 <a href="<?php echo e(route('student.create')); ?>" class="btn btn-success btn-sm my-2"><i class="bi bi-person-add"></i> Add New Student</a>
                 <a href="<?php echo e(route('lesson.created')); ?>" class="btn btn-success btn-sm my-2"><i  class="bi bi-pencil-square""></i>Class options</a>
-                <a href="<?php echo e(route('assist.view')); ?>" class="btn btn-success btn-sm my-2"><i  class="bi bi-pencil-square""></i>Add asssit manual</a>
+                <div class="mb-3 row">
+                    <form action="<?php echo e(route('search.viewStudent')); ?>" method="post">
+                        <div class="mb-3 row">
+                            <label for="DNI" class="col-md-4 col-form-label text-md-end text-start">DNI</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control <?php $__errorArgs = ['dni'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="DNI" name="alumn_DNI" value="<?php echo e(old('alumn_DNI')); ?>">
+                                    <?php if($errors->has('alumn_DNI')): ?>
+                                        <span class="text-danger"><?php echo e($errors->first('ALUMN_DNI')); ?></span>
+                                    <?php endif; ?>
+                            </div>
+                        </div>
+                        <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add Student">
+                    </form>
 
                 <table class="table table-striped table-bordered">
                     <thead>

@@ -12,6 +12,7 @@ class Assist extends Model
     protected $fillable = [
         'id',
         'id_student',
+        'alumn_id',
         'created_at',
         'updated_at'
     ];
