@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class assist extends Model
+class Assist extends Model
 {
     protected $table= 'assists';
     use HasFactory;
@@ -13,7 +13,7 @@ class assist extends Model
         'id',
         'id_student',
         'created_at',
-        'update_at'
+        'updated_at'
     ];
 
     public function student(){

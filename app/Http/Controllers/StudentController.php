@@ -97,30 +97,33 @@ class StudentController extends Controller
 }
 
 
-    /**public function addAssists($id){
+/*public function addAssists($id){
         $student = Student::find($id);
         $assist= new Assist();
         $assist->id_student=$student->id;
         $assist->alumn_id=$student->alumn_DNI;
         $assist->save();
-        return redirect()->route('student.index');
+        return redirect()->route('student.index')
+         ->withSuccess('Assist added with successfully.');
     }
 */
 
 public function addAssists(StoreAssistRequest $request){
-    $student = Student::find($id);
-    if($student->cant()>0){
+    $student = Student::find($request->id);
+    if($student){
     $assist= new Assist();
-    $assist->id_student=$student->id;
-    $assist->alumn_id=$student->alumn_DNI;
+    $assist->id_student=$request->id;
+    $assist->alumn_id=$request->alumn_DNI;
     $assist->save();
     }
-    return redirect()->route('student.index');
+    
+    return redirect()->route('assist.view');
 }
 
     public function addAssistsView() : View
+    
     {
-        return view('student.viewAssist');
+        return view('student.assistsView');
     }
 }
 

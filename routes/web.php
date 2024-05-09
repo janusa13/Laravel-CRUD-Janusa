@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,8 @@ use App\Http\Controllers\LessonController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::post('/student/addAssists',[StudentController::class,'addAssists'])->name('student.addAssists');
-Route::get('/assist/view',[StudentController::class,'addAssistsView'])->name('assist')
+Route::get('/assist/view',[StudentController::class,'addAssistsView'])->name('assist.view');
 
 
 Route::get('/dashboard', function () {

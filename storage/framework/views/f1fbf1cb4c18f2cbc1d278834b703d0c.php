@@ -16,16 +16,18 @@
             <div class="card-header">Student List</div>
             <div class="card-body">
                 <a href="<?php echo e(route('student.create')); ?>" class="btn btn-success btn-sm my-2"><i class="bi bi-person-add"></i> Add New Student</a>
-                  <a href="<?php echo e(route('lesson.created')); ?>" class="btn btn-success btn-sm my-2"><i  class="bi bi-pencil-square""></i>Class options</a>
+                <a href="<?php echo e(route('lesson.created')); ?>" class="btn btn-success btn-sm my-2"><i  class="bi bi-pencil-square""></i>Class options</a>
+                <a href="<?php echo e(route('assist.view')); ?>" class="btn btn-success btn-sm my-2"><i  class="bi bi-pencil-square""></i>Add asssit manual</a>
+
                 <table class="table table-striped table-bordered">
                     <thead>
-                      <tr>
+                    <tr>
                         <th scope="col">S#</th>
                         <th scope="col">DNI</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Fecha de nacimiento</th>
-                      </tr>
+                    </tr>
                     </thead>
                     <tbody>
                         <?php $__empty_1 = true; $__currentLoopData = $students; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $student): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
@@ -47,7 +49,7 @@
                                     <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Do you want to delete this student?');"><i class="bi bi-trash"></i> Delete</button>
                                 </form>
                                 <a href="<?php echo e(route('student.assists', ['id' => $student->id])); ?>" class="btn btn-outline-info"><i class="bi bi-eye"></i> Asistencias</a>
-                                <a href="<?php echo e(route('student.addAssists', ['id' => $student->id])); ?>"  class="btn btn-outline-success"><i class="bi bi-check-lg"></i> Agregar asistencia</a>
+                               <a href="<?php echo e(route('student.addAssists', ['id' => $student->id])); ?>"  class="btn btn-outline-success"><i class="bi bi-check-lg"></i> Agregar asistencia</a> 
                             </td>
                         </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
