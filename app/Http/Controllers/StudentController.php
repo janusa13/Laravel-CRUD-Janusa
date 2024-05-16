@@ -95,10 +95,16 @@ class StudentController extends Controller
             'assists' => $assists,
            // 'condicion'=>$condicion
         ]);
-}
+    }
 
 
-/*public function addAssists($id){
+    public function viewSearch() : View
+    {
+        return view('student.search');
+    }
+
+
+public function addAssists($id){
         $student = Student::find($id);
         $assist= new Assist();
         $assist->id_student=$student->id;
@@ -107,9 +113,9 @@ class StudentController extends Controller
         return redirect()->route('student.index')
          ->withSuccess('Assist added with successfully.');
     }
-*/
 
-public function addAssists(Request $request){
+
+/*public function addAssists(Request $request){
     $student = Student::find($request->alumn_DNI);
     if($student){
         $assist= new Assist();
@@ -126,10 +132,23 @@ public function addAssists(Request $request){
         return redirect()->route('student.index');
     }
 
-    public function showSearch() :view 
+*/
+
+    public function showSearch(Request $request) : View
+        
     {
-        return view('student.showSearchStudent'); 
+        
+        $student=Student::where('alumn_DNI', '=',$request->alumn_DNI)->first();
+        if ($student){
+            return view('student.showAddAssist', [
+                'student' => $student
+        
+            ]);
+        }else 
+        return view('student.search');
     }
+
+
 
 
     public function addAssistsView() : View
@@ -139,3 +158,15 @@ public function addAssists(Request $request){
 }
 
 // Illuminate\Database\QueryException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'assists.student_id' in 'where clause' (Connection: mysql, SQL: select * from `assists` where `assists`.`student_id` = 1 and `assists`.`student_id` is not null) in file C:\laragon\www\Laravel-CRUD-Janusa\vendor\laravel\framework\src\Illuminate\Database\Connection.php on line 801
+
+
+/***
+ * Cuando se termine de hacer esto en el Readme
+ * 
+ * una descripcion del trabajo.
+ * 
+ * desrcribir paso a paso desde la clonacion hasta el deploy.
+ * 
+ * 
+ * 
+ */

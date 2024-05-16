@@ -14,39 +14,15 @@
 
         <div class="card" data-bs-theme="dark">
             <div class="card-header">Student List</div>
-            <div class="card-body">
-                <a href="<?php echo e(route('student.create')); ?>" class="btn btn-success btn-sm my-2"><i class="bi bi-person-add"></i> Add New Student</a>
-                <a href="<?php echo e(route('lesson.created')); ?>" class="btn btn-success btn-sm my-2"><i  class="bi bi-pencil-square""></i>Class options</a>
-                <div class="mb-3 row">
-                    <form action="<?php echo e(route('search.viewStudent')); ?>" method="post">
-                        <div class="mb-3 row">
-                            <label for="DNI" class="col-md-4 col-form-label text-md-end text-start">DNI</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control <?php $__errorArgs = ['dni'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>" id="DNI" name="alumn_DNI" value="<?php echo e(old('alumn_DNI')); ?>">
-                                    <?php if($errors->has('alumn_DNI')): ?>
-                                        <span class="text-danger"><?php echo e($errors->first('ALUMN_DNI')); ?></span>
-                                    <?php endif; ?>
-                            </div>
-                        </div>
-                        <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add Student">
-                    </form>
-
-                <table class="table table-striped table-bordered">
+                  <table class="table table-striped table-bordered">
                     <thead>
-                    <tr>
+                      <tr>
                         <th scope="col">S#</th>
                         <th scope="col">DNI</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Fecha de nacimiento</th>
-                    </tr>
+                      </tr>
                     </thead>
                     <tbody>
                         <?php $__empty_1 = true; $__currentLoopData = $students; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $student): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
@@ -68,7 +44,7 @@ unset($__errorArgs, $__bag); ?>" id="DNI" name="alumn_DNI" value="<?php echo e(o
                                     <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Do you want to delete this student?');"><i class="bi bi-trash"></i> Delete</button>
                                 </form>
                                 <a href="<?php echo e(route('student.assists', ['id' => $student->id])); ?>" class="btn btn-outline-info"><i class="bi bi-eye"></i> Asistencias</a>
-                               <a href="<?php echo e(route('student.addAssists', ['id' => $student->id])); ?>"  class="btn btn-outline-success"><i class="bi bi-check-lg"></i> Agregar asistencia</a> 
+                                <a href="<?php echo e(route('student.addAssists', ['id' => $student->id])); ?>"  class="btn btn-outline-success"><i class="bi bi-check-lg"></i> Agregar asistencia</a>
                             </td>
                         </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
@@ -90,5 +66,4 @@ unset($__errorArgs, $__bag); ?>" id="DNI" name="alumn_DNI" value="<?php echo e(o
 </div>
     
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('../dashboard', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/student/index.blade.php ENDPATH**/ ?>

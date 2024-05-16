@@ -24,7 +24,6 @@
                 <form action="{{ route('student.update', $student->id) }}" method="post">
                     @csrf
                     @method("PUT")
-
                     <div class="mb-3 row">
                         <label for="alumn_DNI" class="col-md-4 col-form-label text-md-end text-start">DNI</label>
                         <div class="col-md-6">

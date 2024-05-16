@@ -1,4 +1,5 @@
-<nav x-data="{ open: false }" class=" dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 sticky-top" >
+
+<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 sticky-top" >
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" >
         <div class="flex justify-between h-16">
@@ -15,8 +16,17 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         NWA
                     </x-nav-link>
+                    <x-nav-link :href="route('student.viewSearch')" :active="request()->routeIs('student.viewSearch')">
+                        Add assist manual
+                    </x-nav-link>
+                    <x-nav-link :href="route('lesson.created')" :active="request()->routeIs('lesson.created')">
+                        Add Lessons
+                    </x-nav-link>
+                    <x-nav-link :href="route('student.create')" :active="request()->routeIs('student.create')">
+                        Add Student
+                    </x-nav-link>
                 </div>
-            </div>
+
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">

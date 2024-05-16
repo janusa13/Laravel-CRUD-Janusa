@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->float('lessons');
-            $table->float('promocion');
-            $table->float('regular');
+            $table->double('lessons')->default(0);
+            $table->double('promocion')->default(0);
+            $table->double('regular')->default(0);
             $table->timestamps();
         });
     }
