@@ -17,6 +17,18 @@
 
             </div>
         <?php endif; ?>
+        <form action="<?php echo e(url('exportDataInExcel')); ?>" method="GET">
+            <label>Export Customer Data in Excel File</label>
+            <div class="input-group mt-2">
+                <select name="type" class="form-control" required>
+                    <option value="">Select Excel Format</option>
+                    <option value="xlsx">XLSX</option>
+                    <option value="csv">CSV</option>
+                    <option value="xls">XLS</option>
+                </select>
+            <button type="submit" class="btn btn-success">Export</button>
+            </div>
+        </form>
         <div class="card" data-bs-theme="dark">
             <div class="card-header">Student List</div>
                   <table class="table table-striped table-bordered">

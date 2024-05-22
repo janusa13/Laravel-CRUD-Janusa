@@ -13,7 +13,8 @@ use App\Http\Requests\UpdateStudentRequest;
 use Illuminate\Support\Facades\Http;
 use App\Http\Requests\StoreAssistRequest;
 use Illuminate\Http\Request;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\StudentExport;
 class StudentController extends Controller
 {
     /**
@@ -106,7 +107,7 @@ class StudentController extends Controller
             $cant = ($asist / $lessons) * 100;
             if($cant<$regular){
                 $condicion="LIBRE";
-            }elseif ($cant>$regular && $cant<$promocion) {
+            }elseif ($cant>=$regular && $cant<$promocion) {
                 $condicion="REGULAR";
             }else {
                 $condicion="PROMOCIONADO";
@@ -186,6 +187,35 @@ public function addAssists($id){
     {
         return view('student.assistsView');
     }
+
+
+    public function exportDataInExcel(Request $request)
+    {
+        if($request->type == 'xlsx'){
+
+            $fileExt = 'xlsx';
+            $exportFormat = \Maatwebsite\Excel\Excel::XLSX;
+        }
+        elseif($request->type == 'csv'){
+
+            $fileExt = 'csv';
+            $exportFormat = \Maatwebsite\Excel\Excel::CSV;
+        }
+        elseif($request->type == 'xls'){
+
+            $fileExt = 'xls';
+            $exportFormat = \Maatwebsite\Excel\Excel::XLS;
+        }
+        else{
+
+            $fileExt = 'xlsx';
+            $exportFormat = \Maatwebsite\Excel\Excel::XLSX;
+        }
+
+
+        $filename = "student-".date('d-m-Y').".".$fileExt;
+        return Excel::download(new StudentExport, $filename, $exportFormat);
+    }
 }
 
 // Illuminate\Database\QueryException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'assists.student_id' in 'where clause' (Connection: mysql, SQL: select * from `assists` where `assists`.`student_id` = 1 and `assists`.`student_id` is not null) in file C:\laragon\www\Laravel-CRUD-Janusa\vendor\laravel\framework\src\Illuminate\Database\Connection.php on line 801
@@ -197,5 +227,9 @@ public function addAssists($id){
  * una descripcion del trabajo.
  * 
  * desrcribir paso a paso desde la clonacion hasta el deploy.
+ * 
+ * 
+ * PARA LA EXPORTACION A EXCEL DNI, APELLIDO, NOMBRE, CANTIDAD DE ASISTENCIA Y CONDICION.
+ * https://www.fundaofwebit.com/post/how-to-export-data-to-excel-file-with-different-format-in-laravel-10
  * 
  */

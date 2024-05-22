@@ -23,6 +23,7 @@ Route::get('/', function () {
 });
 
 //Route::post('/student/addAssists',[StudentController::class,'addAssists'])->name('student.addAssists');
+Route::get('student/export', [StudentController::class, 'exportDataInExcel'])->name('exportDataInExcel');
 
 
 
