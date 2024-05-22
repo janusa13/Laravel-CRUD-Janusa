@@ -35,7 +35,13 @@
                 <div class="row">
                     <label for="assists" class="col-md-4 col-form-label text-md-end text-start"><strong>Asistencias Totales:</strong></label>
                     <div class="col-md-6" style="line-height: 35px;">
-                        <?php echo e($cant); ?>
+                        <?php echo e($cant); ?>%
+                    </div>
+                </div>
+                                <div class="row">
+                    <label for="lastname" class="col-md-4 col-form-label text-md-end text-start"><strong>Apellido:</strong></label>
+                    <div class="col-md-6" style="line-height: 35px;">
+                        <?php echo e($condicion); ?>
 
                     </div>
                 </div>

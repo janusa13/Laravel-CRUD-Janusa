@@ -23,9 +23,7 @@ Route::get('/', function () {
 });
 
 //Route::post('/student/addAssists',[StudentController::class,'addAssists'])->name('student.addAssists');
-Route::get('/assist/view',[StudentController::class,'addAssistsView'])->name('assist.view');
-Route::get('/student/viewSearch',[StudentController::class,'viewSearch'])->name('student.viewSearch');
-Route::post('/student/showSearch/',[StudentController::class,'showSearch'])->name('student.showSearch');
+
 
 
 
@@ -44,6 +42,9 @@ Route::get('/student/assists/{id}',[StudentController::class,'getAssists'])->nam
 Route::get('/student/addAssists/{id}',[StudentController::class,'addAssists'])->name('student.addAssists');
 Route::get('/lesson',[LessonController::class,'create'])->name("lesson.created");
 
+Route::get('/assist/view',[StudentController::class,'addAssistsView'])->name('assist.view');
+Route::get('/student/viewSearch',[StudentController::class,'viewSearch'])->name('student.viewSearch');
+Route::post('/student/showSearch/',[StudentController::class,'showSearch'])->name('student.showSearch');
 
 Route::post('/insert/lesson', [LessonController::class, 'store'])->name('lesson.add');
 

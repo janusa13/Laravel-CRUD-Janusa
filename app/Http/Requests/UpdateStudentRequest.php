@@ -22,7 +22,7 @@ class UpdateStudentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'alumn_DNI' => 'required|string|max:50|unique:students,alumn_DNI,'.$this->student->id,
+            'alumn_DNI' => 'required|string|max:50|unique:students,alumn_DNI,'.$this->student->id, //no se que hace esto, pero si lo borras, rompes TODO!!!!
             'nombre' => 'required|string|max:250',
             'apellido' => 'required|string|max:250',
             'asistencias' => 'integer|min:0|max:10000',

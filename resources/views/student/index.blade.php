@@ -10,7 +10,11 @@
                 {{ $message }}
             </div>
         @endif
-
+         @if($errors->any())
+            <div class="alert alert-warning" role="alert">
+                {{$errors->first()}}
+            </div>
+        @endif
         <div class="card" data-bs-theme="dark">
             <div class="card-header">Student List</div>
                   <table class="table table-striped table-bordered">
@@ -30,7 +34,11 @@
                             <td>{{ $student->alumn_DNI }}</td>
                             <td>{{ $student->nombre }}</td>
                             <td>{{ $student->apellido }}</td>
-                            <td>{{$student->fecha_nac}}</td>
+                            <td>{{$student->fecha_nac}}
+                            @if (\Carbon\Carbon::parse($student->fecha_nac)->format('m-d') === \Carbon\Carbon::now()->format('m-d'))
+                             We're celebrating a birthday!   🎈
+                            @endif
+                            </td>
                             <td>
                                 <form action="{{ route('student.destroy', $student->id) }}" method="post" class="p-2">
                                     @csrf

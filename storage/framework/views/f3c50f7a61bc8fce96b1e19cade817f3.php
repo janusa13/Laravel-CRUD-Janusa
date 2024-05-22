@@ -1,5 +1,4 @@
 
-
 <?php $__env->startSection('content'); ?>
 
 <div class="row justify-content-center mt-3">
@@ -11,7 +10,12 @@
 
             </div>
         <?php endif; ?>
+        <?php if($errors->any()): ?>
+            <div class="alert alert-warning" role="alert">
+                <?php echo e($errors->first()); ?>
 
+            </div>
+        <?php endif; ?>
         <div class="card">
             <div class="card-header">
                 <div class="float-start">
@@ -28,7 +32,7 @@
                     <div class="mb-3 row">
                         <label for="alumn_DNI" class="col-md-4 col-form-label text-md-end text-start">DNI</label>
                         <div class="col-md-6">
-                          <input type="text" class="form-control <?php $__errorArgs = ['alumn_DNI'];
+                          <input type="text" pattern="[0-9]*" class="form-control <?php $__errorArgs = ['alumn_DNI'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -52,4 +56,4 @@ unset($__errorArgs, $__bag); ?>" id="alumn_DNI" name="alumn_DNI">
 </div>
     
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('../layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/student/search.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('../dashboard', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/student/search.blade.php ENDPATH**/ ?>

@@ -11,7 +11,12 @@
 
             </div>
         <?php endif; ?>
+         <?php if($errors->any()): ?>
+            <div class="alert alert-warning" role="alert">
+                <?php echo e($errors->first()); ?>
 
+            </div>
+        <?php endif; ?>
         <div class="card" data-bs-theme="dark">
             <div class="card-header">Student List</div>
                   <table class="table table-striped table-bordered">
@@ -31,7 +36,12 @@
                             <td><?php echo e($student->alumn_DNI); ?></td>
                             <td><?php echo e($student->nombre); ?></td>
                             <td><?php echo e($student->apellido); ?></td>
-                            <td><?php echo e($student->fecha_nac); ?></td>
+                            <td><?php echo e($student->fecha_nac); ?>
+
+                            <?php if(\Carbon\Carbon::parse($student->fecha_nac)->format('m-d') === \Carbon\Carbon::now()->format('m-d')): ?>
+                             We're celebrating a birthday!   🎈
+                            <?php endif; ?>
+                            </td>
                             <td>
                                 <form action="<?php echo e(route('student.destroy', $student->id)); ?>" method="post" class="p-2">
                                     <?php echo csrf_field(); ?>

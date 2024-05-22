@@ -98,4 +98,4 @@ unset($__errorArgs, $__bag); ?>" id="regular" name="regular" value="<?php echo e
 </div>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('../layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/lessons/create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('../dashboard', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/lessons/create.blade.php ENDPATH**/ ?>

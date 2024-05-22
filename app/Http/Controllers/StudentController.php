@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Assist;
+use App\Models\Lesson;
+use Carbon\Carbon;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreStudentRequest;
@@ -37,9 +39,16 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request) : RedirectResponse
     {
-        Student::create($request->all());
-        return redirect()->route('student.index')
+        $date = Carbon::now();
+        $añoNaciemiento = Carbon::parse($request->fecha_nac);
+        $años=$date->diffInYears($añoNaciemiento);
+        if($años>=17){
+            Student::create($request->all());
+            return redirect()->route('student.index')
                 ->withSuccess('New student is added successfully.');
+        }
+        else
+            return redirect()->route('student.create')->withErrors('The student must be over 16 years old');
     }
 
     /**
@@ -86,14 +95,30 @@ class StudentController extends Controller
     public function getAssists($id){
         $student = Student::find($id);
         $cant = $student->assists()->count();
-        $assists = $student->assists;
-        /*$response=Http::get('http://localhost:8000/api/assists/'.$id);
-        $condicion=$response->body();*/
+        $assists = $student->assists; 
+        $clases=Lesson::first();
+        if($clases){
+            $lessons=$clases->lessons;
+            $regular=$clases->regular;
+            $promocion=$clases->promocion;
+            $condicion="";
+            $asist = Assist::where('id_student', $id)->count();
+            $cant = ($asist / $lessons) * 100;
+            if($cant<$regular){
+                $condicion="LIBRE";
+            }elseif ($cant>$regular && $cant<$promocion) {
+                $condicion="REGULAR";
+            }else {
+                $condicion="PROMOCIONADO";
+            }
+        }else{
+            $condicion="no hay clases registradas";
+        }
         return view('student.assists', [
             'student' => $student,
             'cant' => $cant,
             'assists' => $assists,
-           // 'condicion'=>$condicion
+            'condicion'=>$condicion
         ]);
     }
 
@@ -106,12 +131,19 @@ class StudentController extends Controller
 
 public function addAssists($id){
         $student = Student::find($id);
+        $exist = Assist::where('alumn_id',$student->alumn_DNI)
+            ->whereDate('created_at',Carbon::today())
+            ->exists();
+            if($exist){
+                return redirect()->route('student.index')
+            ->withErrors('An attendance has already been recorded for today');
+            }
         $assist= new Assist();
         $assist->id_student=$student->id;
         $assist->alumn_id=$student->alumn_DNI;
         $assist->save();
         return redirect()->route('student.index')
-         ->withSuccess('Assist added with successfully.');
+        ->withSuccess('Assist added with successfully.');
     }
 
 
@@ -134,7 +166,7 @@ public function addAssists($id){
 
 */
 
-    public function showSearch(Request $request) : View
+    public function showSearch(Request $request)
         
     {
         
@@ -145,10 +177,9 @@ public function addAssists($id){
         
             ]);
         }else 
-        return view('student.search');
+        return redirect()->route('student.viewSearch')
+                ->withErrors("Student not found.");
     }
-
-
 
 
     public function addAssistsView() : View
@@ -166,7 +197,5 @@ public function addAssists($id){
  * una descripcion del trabajo.
  * 
  * desrcribir paso a paso desde la clonacion hasta el deploy.
- * 
- * 
  * 
  */
