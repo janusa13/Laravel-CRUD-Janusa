@@ -4,8 +4,8 @@ Sistema para tomar asistencia, desarrollado con la utilizacion de PHP, Laravel, 
 
 >Para inicializar el proyecto seguir las siguientes instrucciones.
 
-## Repositorio de Git.
-https://github.com/janusa13/Laravel-CRUD-Janusa
+## Creado por:
+Facundo Janusa
 
 ## Instalacion
 
