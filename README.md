@@ -1,22 +1,25 @@
-# Simple Laravel 10 CRUD Application Tutorial
+# Sistema de Asistencia para la materia de Programacion 3
 
-Learn how to develop a simple Laravel 10 CRUD application
+Sistema para tomar asistencia, desarrollado con la utilizacion de PHP, Laravel, Mysql, Blade, Breeze(Node.js)
 
-> The complete tutorial step by step guide is available on my blog. [Laravel 10 CRUD Application](https://www.allphptricks.com/simple-laravel-10-crud-application/)
+>Para inicializar el proyecto seguir las siguientes instrucciones.
 
-## Blog
-
-https://www.allphptricks.com/
+## Repositorio de Git.
+https://github.com/janusa13/Laravel-CRUD-Janusa
 
 ## Instalacion
 
-Make sure that you have setup the environment properly. You will need minimum PHP 8.1, MySQL/MariaDB, and composer.
+Asegurarse de tener las dependencias y el entonrno completo. Necesitaras PHP 8, MySQL/MariaDB, composer y Node.
 
-1. Download the project (or clone using GIT)
-2. Copy `.env.example` into `.env` and configure your database credentials
-3. Go to the project's root directory using terminal window/command prompt
-4. Run `composer install`
-5. Set the application key by running `php artisan key:generate --ansi`
-6. Run migrations `php artisan migrate`
-7. Start local server by executing `php artisan serve`
-8. Visit here [http://127.0.0.1:8000/products](http://127.0.0.1:8000/products) to test the application
+1. Descargar el archivo o clonarlo utilizando Git clone
+2. copiar`.env.example` en `.env` y configurar los datos de tu base de datos (user, password, port, etc.)
+3. Abre una terminal en el directorio del proyecto
+4. ejecuta `composer install`
+5. Genera la key de la aplicacion ejecutando `php artisan key:generate --ansi`
+6. Corre las migraciones. `php artisan migrate` (asegurate de tener el servidor de base de datos en funcionamiento.)
+7. Ejecuta el  `php artisan db:seed --class=defaultValuesSeeder`
+8. Instalar Node ejecutando `npm init`
+9. Instalar Maatwebsite/excel (libreria para exportar y descargar excel) ejecutando el comando: `composer require maatwebsite/excel`
+10. correr el servidor Node ejecutanto `npm run dev`
+11. correr el servidor php con `php artisan serve`
+12. visitar [http://127.0.0.1:8000/](http://127.0.0.1:8000/) para entrar a la aplicacion (recuerda que necesitaras crearte una cuenta para acceder.)

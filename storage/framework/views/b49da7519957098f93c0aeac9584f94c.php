@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
@@ -9,9 +10,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 </head>
-<body>   
+<body data-bs-theme="dark">   
 
-    <div class="container">
+    <div class="container" >
         <h3 class=" mt-3">NWA Sistema de control de Asistencias -</h3>
             <?php echo $__env->yieldContent('content'); ?>
         

@@ -1,8 +1,8 @@
-@extends('../layouts')
+@extends('../dashboard')
 
 @section('content')
 
-<div class="row justify-content-center mt-3">
+<div class="row justify-content-center mt-3" data-bs-theme="dark">
     <div class="col-md-8">
 
         <div class="card">
@@ -41,13 +41,6 @@
                         <label for="price" class="col-md-4 col-form-label text-md-end text-start"><strong>Fecha de naciemiento:</strong></label>
                         <div class="col-md-6" style="line-height: 35px;">
                             {{ $student->fecha_nac }}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <label for="description" class="col-md-4 col-form-label text-md-end text-start"><strong>Asistencias:</strong></label>
-                        <div class="col-md-6" style="line-height: 35px;">
-                            {{ $student->asistencias }}
                         </div>
                     </div>
         
