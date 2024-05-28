@@ -1,11 +1,11 @@
 # Sistema de Asistencia para la materia de Programacion 3
 
-Sistema para tomar asistencia, desarrollado con la utilizacion de PHP, Laravel, Mysql, Blade, Breeze(Node.js)
-
->Para inicializar el proyecto seguir las siguientes instrucciones.
-
 ## Creado por:
 Facundo Janusa
+
+Sistema simple para tomar asistencia y determinar la condicion del estudiante, desarrollado con la utilizacion de PHP, Laravel, Mysql, Blade, Breeze(Node.js) y Maatwebsite\Excel en donde amprendimos conceptos como rutas, metodos HTTP, middlewares, login y el patron de diseño MVC.
+
+>Para inicializar el proyecto seguir las siguientes instrucciones.
 
 ## Instalacion
 
