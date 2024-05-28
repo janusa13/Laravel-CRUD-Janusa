@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\student;
+use App\Models\Student;
+use App\Models\Assist;
+use App\Models\Lesson;
+use Carbon\Carbon;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
-
+use Illuminate\Support\Facades\Http;
+use App\Http\Requests\StoreAssistRequest;
+use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\StudentExport;
 class StudentController extends Controller
 {
     /**
@@ -16,7 +23,7 @@ class StudentController extends Controller
     public function index() : View
     {
         return view('student.index', [
-            'student' => Student::latest()->paginate(10)
+            'students' => Student::latest()->paginate(10)
         ]);
     }
 
@@ -33,9 +40,20 @@ class StudentController extends Controller
      */
     public function store(StoreStudentRequest $request) : RedirectResponse
     {
-        Student::create($request->all());
-        return redirect()->route('student.index')
+        $date = Carbon::now();
+        $añoNaciemiento = Carbon::parse($request->fecha_nac);
+        $años=$date->diffInYears($añoNaciemiento);
+        $existingStudent= Student::where('alumn_DNI',$request->alumn_DNI)->first();
+        if ($existingStudent){
+            return redirect()->route('student.create')->withErrors('A student with this DNI alredy exists.');
+        }
+        if($años>=17){
+            Student::create($request->all());
+            return redirect()->route('student.index')
                 ->withSuccess('New student is added successfully.');
+        }
+        else
+            return redirect()->route('student.create')->withErrors('The student must be over 16 years old.');
     }
 
     /**
@@ -45,6 +63,7 @@ class StudentController extends Controller
     {
         return view('student.show', [
             'student' => $student
+            
         ]);
     }
 
@@ -63,9 +82,16 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student) : RedirectResponse
     {
-        $student->update($request->all());
-        return redirect()->back()
+        $date = Carbon::now();
+        $añoNaciemiento = Carbon::parse($request->fecha_nac);
+        $años=$date->diffInYears($añoNaciemiento);
+        if($años>=17){
+            $student->update($request->all());
+            return redirect()->back()
                 ->withSuccess('Student is updated successfully.');
+        }else
+            return redirect()->route('student.index')->withErrors('The student must be over 16 years old.');
+        
     }
 
     /**
@@ -78,16 +104,124 @@ class StudentController extends Controller
                 ->withSuccess('Student is deleted successfully.');
     }
 
-public function getAssists($id){
-    $student = Student::findOrFail($id);
-    $cant = $student->assists()->count();
-    $assists = $student->assists;
-    return view('student.assists', [
-        'student' => $student,
-        'cant' => $cant,
-        'assists' => $assists
-    ]);
-}
+    public function getAssists($id){
+        $student = Student::find($id);
+        $cant = $student->assists()->count();
+        $assists = $student->assists; 
+        $clases=Lesson::first();
+        if($clases){
+            $lessons=$clases->lessons;
+            $regular=$clases->regular;
+            $promocion=$clases->promocion;
+            $condicion="";
+            $asist = Assist::where('id_student', $id)->count();
+            $cant = ($asist / $lessons) * 100;
+            if($cant<$regular){
+                $condicion="LIBRE";
+            }elseif ($cant>=$regular && $cant<$promocion) {
+                $condicion="REGULAR";
+            }else {
+                $condicion="PROMOCIONADO";
+            }
+        }else{
+            $condicion="no hay clases registradas";
+        }
+        return view('student.assists', [
+            'student' => $student,
+            'cant' => $cant,
+            'asist' =>$asist,
+            'assists' => $assists,
+            'condicion'=>$condicion
+        ]);
+    }
+
+
+    public function viewSearch() : View
+    {
+        return view('student.search');
+    }
+
+
+public function addAssists($id){
+        $student = Student::find($id);
+        $exist = Assist::where('alumn_id',$student->alumn_DNI)
+            ->whereDate('created_at',Carbon::today())
+            ->exists();
+            if($exist){
+                return redirect()->route('student.index')
+            ->withErrors('An attendance has already been recorded for today');
+            }
+        $assist= new Assist();
+        $assist->id_student=$student->id;
+        $assist->alumn_id=$student->alumn_DNI;
+        $assist->save();
+        return redirect()->route('student.index')
+        ->withSuccess('Assist added with successfully.');
+    }
+
+    public function showSearch(Request $request)
+        
+    {
+        
+        $student=Student::where('alumn_DNI', '=',$request->alumn_DNI)->first();
+        if ($student){
+            return view('student.showAddAssist', [
+                'student' => $student
+        
+            ]);
+        }else 
+        return redirect()->route('student.viewSearch')
+                ->withErrors("Student not found.");
+    }
+
+
+    public function addAssistsView() : View
+    {
+        return view('student.assistsView');
+    }
+
+
+    public function exportDataInExcel(Request $request)
+    {
+        if($request->type == 'xlsx'){
+
+            $fileExt = 'xlsx';
+            $exportFormat = \Maatwebsite\Excel\Excel::XLSX;
+        }
+        elseif($request->type == 'csv'){
+
+            $fileExt = 'csv';
+            $exportFormat = \Maatwebsite\Excel\Excel::CSV;
+        }
+        elseif($request->type == 'xls'){
+
+            $fileExt = 'xls';
+            $exportFormat = \Maatwebsite\Excel\Excel::XLS;
+        }
+        else{
+
+            $fileExt = 'xlsx';
+            $exportFormat = \Maatwebsite\Excel\Excel::XLSX;
+        }
+
+
+        $filename = "student-".date('d-m-Y').".".$fileExt;
+        return Excel::download(new StudentExport, $filename, $exportFormat);
+    }
 }
 
-// Illuminate\Database\QueryException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'assists.student_id' in 'where clause' (Connection: mysql, SQL: select * from `assists` where `assists`.`student_id` = 1 and `assists`.`student_id` is not null) in file C:\laragon\www\Laravel-CRUD-Janusa\vendor\laravel\framework\src\Illuminate\Database\Connection.php on line 801
+
+
+
+/***
+ * Cuando se termine de hacer esto en el Readme
+ * 
+ * una descripcion del trabajo.
+ * 
+ * desrcribir paso a paso desde la clonacion hasta el deploy.
+ * 
+ * 
+ * PARA LA EXPORTACION A EXCEL DNI, APELLIDO, NOMBRE, CANTIDAD DE ASISTENCIA Y CONDICION.
+ * https://www.fundaofwebit.com/post/how-to-export-data-to-excel-file-with-different-format-in-laravel-10
+ * 
+ */

@@ -17,11 +17,16 @@
             <div class="card-body">
                 <form action="<?php echo e(route('student.store')); ?>" method="post">
                     <?php echo csrf_field(); ?>
+                <?php if($errors->any()): ?>
+                    <div class="alert alert-warning" role="alert">
+                        <?php echo e($errors->first()); ?>
 
+                    </div>
+                <?php endif; ?>
                     <div class="mb-3 row">
                         <label for="DNI" class="col-md-4 col-form-label text-md-end text-start">DNI</label>
                         <div class="col-md-6">
-                          <input type="text" class="form-control <?php $__errorArgs = ['dni'];
+                          <input type="text" pattern="[0-9]*" class="form-control <?php $__errorArgs = ['dni'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -38,7 +43,7 @@ unset($__errorArgs, $__bag); ?>" id="DNI" name="alumn_DNI" value="<?php echo e(o
                     <div class="mb-3 row">
                         <label for="nombre" class="col-md-4 col-form-label text-md-end text-start">Nombre</label>
                         <div class="col-md-6">
-                          <input type="text" class="form-control <?php $__errorArgs = ['nombre'];
+                          <input type="text" pattern="[A-Za-z]+" class="form-control <?php $__errorArgs = ['nombre'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -53,7 +58,7 @@ unset($__errorArgs, $__bag); ?>" id="nombre" name="nombre" value="<?php echo e(o
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="apellido" class="col-md-4 col-form-label text-md-end text-start">Apellido</label>
+                        <label for="apellido" pattern="[A-Za-z]+" class="col-md-4 col-form-label text-md-end text-start">Apellido</label>
                         <div class="col-md-6">
                           <input type="text" step="0.01" class="form-control <?php $__errorArgs = ['apellido'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -85,7 +90,17 @@ unset($__errorArgs, $__bag); ?>" id="fecha_nac" name="fecha_nac" value="<?php ec
                             <?php endif; ?>
                         </div>
                     </div>
-                    
+                    <div class="mb-3 row">
+                        <label for="año" class="col-md-4 col-form-label text-md-end text-start">Año</label>
+                        <div class="col-md-6">
+                            <select name="año" class="form-control" required>
+                                <option value="">Selecionar año </option>
+                                <option value="primero">Primero</option>
+                                <option value="segundo">Segundo</option>
+                                <option value="tercero">Tercero</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add Student">
                     </div>
@@ -97,4 +112,4 @@ unset($__errorArgs, $__bag); ?>" id="fecha_nac" name="fecha_nac" value="<?php ec
 </div>
     
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('../layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/student/create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('../dashboard', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/student/create.blade.php ENDPATH**/ ?>

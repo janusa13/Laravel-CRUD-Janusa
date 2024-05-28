@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('apellido', 100);
             $table->integer('asistencias')->default(0);
             $table->date('fecha_nac')->nullable();
-            $table->enum('grupo', ['A', 'B'])->default('A');
+            $table->enum('año', ['primero', 'segundo','tercero'])->default('primero');
             $table->timestamps();
         });
     }
