@@ -63,6 +63,17 @@
                             @endif
                         </div>
                     </div>
+                    <div class="mb-3 row">
+                        <label for="año" class="col-md-4 col-form-label text-md-end text-start">Año</label>
+                        <div class="col-md-6">
+                            <select name="año" class="form-control" required>
+                                <option value="">Seleccionar año</option>
+                                <option value="primero" {{ $student->año == 'primero' ? 'selected' : '' }}>Primero</option>
+                                <option value="segundo" {{ $student->año == 'segundo' ? 'selected' : '' }}>Segundo</option>
+                                <option value="tercero" {{ $student->año == 'tercero' ? 'selected' : '' }}>Tercero</option>
+                            </select>
+                        </div>
+                    </div>
                     
                     <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Update">

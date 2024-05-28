@@ -31,15 +31,21 @@
 
                     </div>
                 </div>
+                                                <div class="row">
+                    <label for="lastname" class="col-md-4 col-form-label text-md-end text-start"><strong>Cantidad de asistencias:</strong></label>
+                    <div class="col-md-6" style="line-height: 35px;">
+                        <?php echo e($asist); ?>
+
+                    </div>
 
                 <div class="row">
-                    <label for="assists" class="col-md-4 col-form-label text-md-end text-start"><strong>Asistencias Totales:</strong></label>
+                    <label for="assists" class="col-md-4 col-form-label text-md-end text-start"><strong>Porcentaje de asistencias:</strong></label>
                     <div class="col-md-6" style="line-height: 35px;">
                         <?php echo e($cant); ?>%
                     </div>
                 </div>
                                 <div class="row">
-                    <label for="lastname" class="col-md-4 col-form-label text-md-end text-start"><strong>Apellido:</strong></label>
+                    <label for="lastname" class="col-md-4 col-form-label text-md-end text-start"><strong>Condicion:</strong></label>
                     <div class="col-md-6" style="line-height: 35px;">
                         <?php echo e($condicion); ?>
 

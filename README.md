@@ -19,6 +19,7 @@ Asegurarse de tener las dependencias y el entonrno completo. Necesitaras PHP 8, 
 6. Corre las migraciones. `php artisan migrate` (asegurate de tener el servidor de base de datos en funcionamiento.)
 7. Ejecuta el  `php artisan db:seed --class=defaultValuesSeeder`
 8. Instalar Node ejecutando `npm init`
+9. Instalar Maatwebsite/excel (libreria para exportar y descargar excel) ejecutando el comando: `composer require maatwebsite/excel`
 9. correr el servidor Node ejecutanto `npm run dev`
 7. correr el servidor php con `php artisan serve`
 8. visitar [http://127.0.0.1:8000/](http://127.0.0.1:8000/) para entrar a la aplicacion (recuerda que necesitaras crearte una cuenta para acceder.)

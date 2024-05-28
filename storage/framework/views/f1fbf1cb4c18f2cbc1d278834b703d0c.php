@@ -17,18 +17,18 @@
 
             </div>
         <?php endif; ?>
-        <form action="<?php echo e(url('exportDataInExcel')); ?>" method="GET">
-            <label>Export Customer Data in Excel File</label>
-            <div class="input-group mt-2">
-                <select name="type" class="form-control" required>
-                    <option value="">Select Excel Format</option>
-                    <option value="xlsx">XLSX</option>
-                    <option value="csv">CSV</option>
-                    <option value="xls">XLS</option>
-                </select>
-            <button type="submit" class="btn btn-success">Export</button>
-            </div>
-        </form>
+      <form action="<?php echo e(route('exportDataInExcel')); ?>" method="GET">
+    <label>Export Customer Data in Excel File</label>
+    <div class="input-group mt-2">
+        <select name="type" class="form-control" required>
+            <option value="">Select Excel Format</option>
+            <option value="xlsx">XLSX</option>
+            <option value="csv">CSV</option>
+            <option value="xls">XLS</option>
+        </select>
+        <button type="submit" class="btn btn-success">Export</button>
+    </div>
+</form>
         <div class="card" data-bs-theme="dark">
             <div class="card-header">Student List</div>
                   <table class="table table-striped table-bordered">
@@ -39,6 +39,7 @@
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Fecha de nacimiento</th>
+                        <th scpoe="col">Año</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -54,6 +55,7 @@
                              We're celebrating a birthday!   🎈
                             <?php endif; ?>
                             </td>
+                            <td><?php echo e($student->año); ?></td>
                             <td>
                                 <form action="<?php echo e(route('student.destroy', $student->id)); ?>" method="post" class="p-2">
                                     <?php echo csrf_field(); ?>

@@ -14,7 +14,8 @@ class Student extends Model
         'nombre',
         'apellido',
         'asistencias',
-        'fecha_nac'
+        'fecha_nac',
+        'año'
     ];
 
 

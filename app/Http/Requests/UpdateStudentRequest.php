@@ -26,7 +26,8 @@ class UpdateStudentRequest extends FormRequest
             'nombre' => 'required|string|max:250',
             'apellido' => 'required|string|max:250',
             'asistencias' => 'integer|min:0|max:10000',
-            'fecha_nac' => 'required|date'
+            'fecha_nac' => 'required|date',
+            'año' => 'required|in:primero,segundo,tercero',
         ];
     }
 }

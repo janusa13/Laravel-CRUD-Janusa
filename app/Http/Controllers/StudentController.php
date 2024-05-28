@@ -43,13 +43,17 @@ class StudentController extends Controller
         $date = Carbon::now();
         $añoNaciemiento = Carbon::parse($request->fecha_nac);
         $años=$date->diffInYears($añoNaciemiento);
+        $existingStudent= Student::where('alumn_DNI',$request->alumn_DNI)->first();
+        if ($existingStudent){
+            return redirect()->route('student.create')->withErrors('A student with this DNI alredy exists.');
+        }
         if($años>=17){
             Student::create($request->all());
             return redirect()->route('student.index')
                 ->withSuccess('New student is added successfully.');
         }
         else
-            return redirect()->route('student.create')->withErrors('The student must be over 16 years old');
+            return redirect()->route('student.create')->withErrors('The student must be over 16 years old.');
     }
 
     /**
@@ -78,9 +82,16 @@ class StudentController extends Controller
      */
     public function update(UpdateStudentRequest $request, Student $student) : RedirectResponse
     {
-        $student->update($request->all());
-        return redirect()->back()
+        $date = Carbon::now();
+        $añoNaciemiento = Carbon::parse($request->fecha_nac);
+        $años=$date->diffInYears($añoNaciemiento);
+        if($años>=17){
+            $student->update($request->all());
+            return redirect()->back()
                 ->withSuccess('Student is updated successfully.');
+        }else
+            return redirect()->route('student.index')->withErrors('The student must be over 16 years old.');
+        
     }
 
     /**
@@ -118,6 +129,7 @@ class StudentController extends Controller
         return view('student.assists', [
             'student' => $student,
             'cant' => $cant,
+            'asist' =>$asist,
             'assists' => $assists,
             'condicion'=>$condicion
         ]);
@@ -146,26 +158,6 @@ public function addAssists($id){
         return redirect()->route('student.index')
         ->withSuccess('Assist added with successfully.');
     }
-
-
-/*public function addAssists(Request $request){
-    $student = Student::find($request->alumn_DNI);
-    if($student){
-        $assist= new Assist();
-        $assist->id_student=$student->id;
-        $assist->alumn_id=$student->alumn_DNI;
-        $assist->save();
-    }
-    return view('student.assistsView');
-}
-
-    public function findStudent(Request $request)
-    {
-        $student=Student::find($request->alumn_DNI);
-        return redirect()->route('student.index');
-    }
-
-*/
 
     public function showSearch(Request $request)
         
@@ -218,7 +210,7 @@ public function addAssists($id){
     }
 }
 
-// Illuminate\Database\QueryException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'assists.student_id' in 'where clause' (Connection: mysql, SQL: select * from `assists` where `assists`.`student_id` = 1 and `assists`.`student_id` is not null) in file C:\laragon\www\Laravel-CRUD-Janusa\vendor\laravel\framework\src\Illuminate\Database\Connection.php on line 801
+
 
 
 /***

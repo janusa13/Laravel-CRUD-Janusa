@@ -61,7 +61,17 @@
                             @endif
                         </div>
                     </div>
-                    
+                    <div class="mb-3 row">
+                        <label for="año" class="col-md-4 col-form-label text-md-end text-start">Año</label>
+                        <div class="col-md-6">
+                            <select name="año" class="form-control" required>
+                                <option value="">Selecionar año </option>
+                                <option value="primero">Primero</option>
+                                <option value="segundo">Segundo</option>
+                                <option value="tercero">Tercero</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="mb-3 row">
                         <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add Student">
                     </div>
