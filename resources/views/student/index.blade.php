@@ -38,6 +38,7 @@
                         <th scope="col">Apellido</th>
                         <th scope="col">Fecha de nacimiento</th>
                         <th scpoe="col">Año</th>
+                        <th scope="col">Asistencias:</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -53,6 +54,7 @@
                             @endif
                             </td>
                             <td>{{ $student->año }}</td>
+                             <td>{{ $student->assists->count() }}</td>
                             <td>
                                 <form action="{{ route('student.destroy', $student->id) }}" method="post" class="p-2">
                                     @csrf

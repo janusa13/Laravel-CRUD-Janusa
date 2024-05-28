@@ -21,9 +21,10 @@ class StudentController extends Controller
      * Display a listing of the resource.
      */
     public function index() : View
+    
     {
         return view('student.index', [
-            'students' => Student::latest()->paginate(10)
+            'students' => Student::latest()->paginate(10),
         ]);
     }
 

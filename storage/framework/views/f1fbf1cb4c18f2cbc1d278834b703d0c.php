@@ -40,6 +40,7 @@
                         <th scope="col">Apellido</th>
                         <th scope="col">Fecha de nacimiento</th>
                         <th scpoe="col">Año</th>
+                        <th scope="col">Asistencias:</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -56,6 +57,7 @@
                             <?php endif; ?>
                             </td>
                             <td><?php echo e($student->año); ?></td>
+                             <td><?php echo e($student->assists->count()); ?></td>
                             <td>
                                 <form action="<?php echo e(route('student.destroy', $student->id)); ?>" method="post" class="p-2">
                                     <?php echo csrf_field(); ?>
