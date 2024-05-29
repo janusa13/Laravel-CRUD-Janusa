@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="row justify-content-center mt-3">
+<div class="row justify-content-center mt-3" data-bs-theme="dark">
     <div class="col-md-8">
 
         <div class="card">
@@ -25,17 +25,17 @@
                     <div class="mb-3 row">
                         <label for="DNI" class="col-md-4 col-form-label text-md-end text-start">DNI</label>
                         <div class="col-md-6">
-                          <input type="text" pattern="[0-9]*" class="form-control @error('dni') is-invalid @enderror" id="DNI" name="alumn_DNI" value="{{ old('alumn_DNI') }}">
-                            @if ($errors->has('alumn_DNI'))
-                                <span class="text-danger">{{ $errors->first('ALUMN_DNI') }}</span>
-                            @endif
+                            <input type="text" pattern="[0-9]*" class="form-control @error('dni') is-invalid @enderror" id="DNI" name="alumn_DNI" value="{{ old('alumn_DNI') }}">
+                                @if ($errors->has('alumn_DNI'))
+                                    <span class="text-danger">{{ $errors->first('ALUMN_DNI') }}</span>
+                                @endif
                         </div>
                     </div>
 
                     <div class="mb-3 row">
                         <label for="nombre" class="col-md-4 col-form-label text-md-end text-start">Nombre</label>
                         <div class="col-md-6">
-                          <input type="text" pattern="[A-Za-z]+" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" value="{{ old('nombre') }}">
+                            <input type="text" pattern="[A-Za-z]+" class="form-control @error('nombre') is-invalid @enderror" id="nombre" name="nombre" value="{{ old('nombre') }}">
                             @if ($errors->has('nombre'))
                                 <span class="text-danger">{{ $errors->first('nombre') }}</span>
                             @endif
@@ -43,12 +43,12 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="apellido" pattern="[A-Za-z]+" class="col-md-4 col-form-label text-md-end text-start">Apellido</label>
+                        <label for="apellido"  class="col-md-4 col-form-label text-md-end text-start">Apellido</label>
                         <div class="col-md-6">
-                          <input type="text" step="0.01" class="form-control @error('apellido') is-invalid @enderror" id="apellido" name="apellido" value="{{ old('apellido') }}">
-                            @if ($errors->has('apellido'))
-                                <span class="text-danger">{{ $errors->first('apellido') }}</span>
-                            @endif
+                            <input type="text" pattern="[A-Za-z]+" step="0.01" class="form-control @error('apellido') is-invalid @enderror" id="apellido" name="apellido" value="{{ old('apellido') }}">
+                                @if ($errors->has('apellido'))
+                                    <span class="text-danger">{{ $errors->first('apellido') }}</span>
+                                @endif
                         </div>
                     </div>
 

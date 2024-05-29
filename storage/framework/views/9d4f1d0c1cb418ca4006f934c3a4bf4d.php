@@ -2,7 +2,7 @@
 
 <?php $__env->startSection('content'); ?>
 
-<div class="row justify-content-center mt-3">
+<div class="row justify-content-center mt-3" data-bs-theme="dark">
     <div class="col-md-8">
 
         <div class="card">
@@ -68,4 +68,4 @@
 
 
 
-<?php echo $__env->make('../layouts', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/student/assists.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('../dashboard', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\Laravel-CRUD-Janusa\resources\views/student/assists.blade.php ENDPATH**/ ?>
