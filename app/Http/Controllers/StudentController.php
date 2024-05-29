@@ -20,12 +20,18 @@ class StudentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() : View
-    
+    public function index(Request $request) : View
     {
-        return view('student.index', [
-            'students' => Student::latest()->paginate(10),
-        ]);
+        if($request!=null){
+            return view('student.index', [
+                'students' => Student::latest()->paginate(10),
+            ]);
+        }else if($request->año=="primero"){
+            $student = Student::where('año',$request->año);
+            return view ('student.index',[
+                'student'=>$student
+            ])
+        }
     }
 
     /**

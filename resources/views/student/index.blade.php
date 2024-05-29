@@ -16,7 +16,7 @@
             </div>
         @endif
       <form action="{{ route('exportDataInExcel') }}" method="GET">
-    <label>Export Customer Data in Excel File</label>
+    <label>Export Students data in Excel File</label>
     <div class="input-group mt-2">
         <select name="type" class="form-control" required>
             <option value="">Select Excel Format</option>
@@ -28,10 +28,22 @@
     </div>
 </form>
         <div class="card" data-bs-theme="dark">
-            <div class="card-header">Student List</div>
-                  <table class="table table-striped table-bordered">
+            <div class="card-header p-2">Student List</div>
+            <form action="{{route ('student.index')}}" method="POST" class="mb-3 row">
+                <label>Filter student for years</label>
+                <div class="input-group">
+                    <select name="año" class="form-control" required>
+                        <option value="">Select year</option>
+                        <option value="primero">Primero</option>
+                        <option value="segundo">Segundo</option>
+                        <option value="tercero">Tercero</option>
+                    </select>
+                    <button type="submit" class="btn btn-success">Filter</button>
+                </div>
+            </form>
+                    <table class="table table-striped table-bordered">
                     <thead>
-                      <tr>
+                    <tr>
                         <th scope="col">S#</th>
                         <th scope="col">DNI</th>
                         <th scope="col">Nombre</th>
@@ -59,9 +71,7 @@
                                 <form action="{{ route('student.destroy', $student->id) }}" method="post" class="p-2">
                                     @csrf
                                     @method('DELETE')
-
                                     <a href="{{ route('student.show', $student->id) }}" class="btn btn-outline-warning"><i class="bi bi-file-earmark-person"></i> Show</a>
-
                                     <a href="{{ route('student.edit', $student->id) }}" class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i> Edit</a>
                                     
                                     <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Do you want to delete this student?');"><i class="bi bi-trash"></i> Delete</button>

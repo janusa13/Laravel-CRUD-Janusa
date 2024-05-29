@@ -26,7 +26,7 @@
                     <div class="mb-3 row">
                         <label for="DNI" class="col-md-4 col-form-label text-md-end text-start">DNI</label>
                         <div class="col-md-6">
-                          <input type="text" pattern="[0-9]*" class="form-control <?php $__errorArgs = ['dni'];
+                            <input type="text" pattern="[0-9]*" class="form-control <?php $__errorArgs = ['dni'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -34,16 +34,16 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" id="DNI" name="alumn_DNI" value="<?php echo e(old('alumn_DNI')); ?>">
-                            <?php if($errors->has('alumn_DNI')): ?>
-                                <span class="text-danger"><?php echo e($errors->first('ALUMN_DNI')); ?></span>
-                            <?php endif; ?>
+                                <?php if($errors->has('alumn_DNI')): ?>
+                                    <span class="text-danger"><?php echo e($errors->first('ALUMN_DNI')); ?></span>
+                                <?php endif; ?>
                         </div>
                     </div>
 
                     <div class="mb-3 row">
                         <label for="nombre" class="col-md-4 col-form-label text-md-end text-start">Nombre</label>
                         <div class="col-md-6">
-                          <input type="text" pattern="[A-Za-z]+" class="form-control <?php $__errorArgs = ['nombre'];
+                            <input type="text" pattern="[A-Za-z]+" class="form-control <?php $__errorArgs = ['nombre'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -58,9 +58,9 @@ unset($__errorArgs, $__bag); ?>" id="nombre" name="nombre" value="<?php echo e(o
                     </div>
 
                     <div class="mb-3 row">
-                        <label for="apellido" pattern="[A-Za-z]+" class="col-md-4 col-form-label text-md-end text-start">Apellido</label>
+                        <label for="apellido"  class="col-md-4 col-form-label text-md-end text-start">Apellido</label>
                         <div class="col-md-6">
-                          <input type="text" step="0.01" class="form-control <?php $__errorArgs = ['apellido'];
+                            <input type="text" pattern="[A-Za-z]+" step="0.01" class="form-control <?php $__errorArgs = ['apellido'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -68,9 +68,9 @@ $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" id="apellido" name="apellido" value="<?php echo e(old('apellido')); ?>">
-                            <?php if($errors->has('apellido')): ?>
-                                <span class="text-danger"><?php echo e($errors->first('apellido')); ?></span>
-                            <?php endif; ?>
+                                <?php if($errors->has('apellido')): ?>
+                                    <span class="text-danger"><?php echo e($errors->first('apellido')); ?></span>
+                                <?php endif; ?>
                         </div>
                     </div>
 
