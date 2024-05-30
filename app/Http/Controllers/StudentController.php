@@ -31,7 +31,7 @@ class StudentController extends Controller
         $students = $query->latest()->paginate(10);
 
         return view('student.index', [
-            'students' => $students,
+            'students' => $students
         ]);
     }
 
@@ -242,5 +242,13 @@ public function addAssists($id){
  * 
  * PARA LA EXPORTACION A EXCEL DNI, APELLIDO, NOMBRE, CANTIDAD DE ASISTENCIA Y CONDICION.
  * https://www.fundaofwebit.com/post/how-to-export-data-to-excel-file-with-different-format-in-laravel-10
+ * 
+ * Desarrollar un sistema de logging es ir dejando asentado ciertas actividades del usuario. ejm: registrar altas y bajas de estudiantes
+ *  (midleware) y dejar registrado: Altas, Modificaciones y bajas del modelo Student.
+ *  que quede registrado: el usuario, fecha, hora, la accion que se produjo, la IP y el navegador (browser).
+ *  y permitir acceder a una pantalla donde pueda ver todo estos movimientos, una lista de usuario, fecha y hora, a esta vista solo va a poder
+ *  acceder quien tenga la condicion de Admin.
+ * 
+ * 
  * 
  */

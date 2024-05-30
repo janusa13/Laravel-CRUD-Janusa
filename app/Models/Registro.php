@@ -11,6 +11,10 @@ class Registro extends Model
     use HasFactory;
     protected $fillable=[
         'hora',
+        'user',
+        'fecha',
+        'accion',
+        'navegador',
         'ip'
     ];
 }

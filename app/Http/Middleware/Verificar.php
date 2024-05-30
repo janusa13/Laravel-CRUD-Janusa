@@ -3,8 +3,10 @@
 namespace App\Http\Middleware;
 
 use App\Models\Registro;
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\Response;
 
 class Verificar
@@ -16,13 +18,33 @@ class Verificar
      */
     public function handle(Request $request, Closure $next): Response
     {
+        
         $response = $next($request);
-        $hora=now();
-        $ip = $request->ip();
-        Registro::create([
-            'hora'=>$hora,
-            'ip'=>$ip
-        ]);
+        $hora=Carbon::now()->format('H:i:s');
+        $fecha = Carbon::now()->format('Y-m-d');
+        $metodo=$request->method();
+        $navegador =$request->header('User-Agent');
+        if ($metodo!=='GET'){
+            if($metodo=='POST'){
+                $metodo='alta';
+            }else if($metodo=='PUT' || $metodo=='PATCH'){
+                $metodo='modificacion';
+            }else if($metodo==`DELETE`){
+                $metodo='baja';
+            }
+           
+            $user = auth()->user()->name;
+            $ip = $request->ip();
+            Registro::create([
+                'hora'=>$hora,
+                'user'=>$user,
+                'accion'=>$metodo,
+                'ip'=>$ip,
+                'navegador'=>$navegador,
+                'fecha'=>$fecha
+            ]);
+            return $response;
+        }
         return $response;
     }
 }

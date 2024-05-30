@@ -25,6 +25,11 @@
                     <x-nav-link :href="route('student.create')" :active="request()->routeIs('student.create')">
                         Add Student
                     </x-nav-link>
+                    @if( Auth::user()->rol == 'admin')
+                    <x-nav-link :href="route('registro.index')" :active="request()->routeIs('registro.index')">
+                        ver registros
+                    </x-nav-link>^
+                    @endif
                 </div>
 
 

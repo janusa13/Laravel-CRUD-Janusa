@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RegistroController;
+use App\Http\Middleware\Verificar;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +27,7 @@ Route::get('/', function () {
 //Route::post('/student/addAssists',[StudentController::class,'addAssists'])->name('student.addAssists');
 Route::get('student/export', [StudentController::class, 'exportDataInExcel'])->name('exportDataInExcel');
 
-
+Route::get('registro',[RegistroController::class,'index'])->name('registro.index');
 
 
 
@@ -49,7 +51,7 @@ Route::post('/student/showSearch/',[StudentController::class,'showSearch'])->nam
 
 Route::post('/insert/lesson', [LessonController::class, 'store'])->name('lesson.add');
 
-     Route::resource('student',StudentController::class);
+    Route::resource('student',StudentController::class)->middleware('log','registro');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

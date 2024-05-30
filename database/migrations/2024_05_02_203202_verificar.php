@@ -14,7 +14,11 @@ return new class extends Migration
         Schema::create('verificar', function(Blueprint $table){
         $table->bigIncrements('ID');
         $table->string('ip');
-        $table->timestamp('hora')->nullable();
+        $table->string('user');
+        $table->string('accion');
+        $table->date('fecha');
+        $table->time('hora')->nullable();
+        $table->string('navegador');
         $table->timestamps();
         });
     }
