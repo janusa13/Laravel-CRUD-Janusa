@@ -34,8 +34,8 @@
             <form action="<?php echo e(route ('student.index')); ?>" method="GET" class="mb-3 row">
                 <label>Filter student for years</label>
                 <div class="input-group">
-                    <select name="año" class="form-control">
-                        <option value="">Todos</option>
+                    <select name="año" class="form-control" required>
+                        <option value="">Seleccionar Año</option>
                         <option value="primero">Primero</option>
                         <option value="segundo">Segundo</option>
                         <option value="tercero">Tercero</option>
