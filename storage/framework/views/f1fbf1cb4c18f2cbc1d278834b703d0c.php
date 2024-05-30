@@ -31,11 +31,11 @@
 </form>
         <div class="card" data-bs-theme="dark">
             <div class="card-header p-2">Student List</div>
-            <form action="<?php echo e(route ('student.index')); ?>" method="POST" class="mb-3 row">
+            <form action="<?php echo e(route ('student.index')); ?>" method="GET" class="mb-3 row">
                 <label>Filter student for years</label>
                 <div class="input-group">
-                    <select name="año" class="form-control" required>
-                        <option value="">Select year</option>
+                    <select name="año" class="form-control">
+                        <option value="">Todos</option>
                         <option value="primero">Primero</option>
                         <option value="segundo">Segundo</option>
                         <option value="tercero">Tercero</option>

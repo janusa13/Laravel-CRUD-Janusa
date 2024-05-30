@@ -22,16 +22,17 @@ class StudentController extends Controller
      */
     public function index(Request $request) : View
     {
-        if($request!=null){
-            return view('student.index', [
-                'students' => Student::latest()->paginate(10),
-            ]);
-        }else if($request->año=="primero"){
-            $student = Student::where('año',$request->año);
-            return view ('student.index',[
-                'student'=>$student
-            ])
+        $query = Student::query();
+
+        if ($request->has('año') && $request->año !== '') {
+            $query->where('año', $request->año);
         }
+
+        $students = $query->latest()->paginate(10);
+
+        return view('student.index', [
+            'students' => $students,
+        ]);
     }
 
     /**

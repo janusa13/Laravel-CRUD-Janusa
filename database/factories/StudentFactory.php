@@ -22,7 +22,7 @@ class StudentFactory extends Factory
             'apellido' => $this->faker->lastName,
             'asistencias' => $this->faker->numberBetween(0, 30),
             'fecha_nac' => $this->faker->date(),
-            'grupo' => $this->faker->randomElement(['A', 'B']),
+            'año' => $this->faker->randomElement(['primero', 'segundo', 'tercero']),
         ];
     }
 }
